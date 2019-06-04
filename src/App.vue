@@ -4,11 +4,11 @@
     <w-navigation v-if="$store.getters['auth/user']" :drawer="drawer" @todrawer="(p)=> drawer = p"></w-navigation>
     <!-- 导航end -->
     <!-- 标题 -->
-    <v-toolbar color="red" app dense fixed clipped-left>
+    <v-toolbar color="primary" app dense fixed clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title class="headline text-uppercase">
         <span>{{$t('advokateCard')}}</span>
-        <span class="font-weight-light">{{$t('publicManagementPlatform')}}</span>
+        <span class="font-weight-light">{{$t('pos')}}</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <div style="width:120px;">

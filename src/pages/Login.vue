@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid fill-height>
+  <v-container fluid fill-height class="v-body">
     <v-layout align-center justify-center>
       <v-flex xs12 sm8 md4>
         <v-card class="elevation-12">
@@ -64,4 +64,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.v-body {
+  height: 80vh;
+}
 </style>

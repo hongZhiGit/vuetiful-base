@@ -2,5 +2,6 @@
   "message": "hello i18n !!",
   "login": "登录",
   "userName": "用户名",
-  "passWord": "密码"
+  "passWord": "密码",
+  "pos": "收银"
 }
