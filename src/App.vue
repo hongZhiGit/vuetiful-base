@@ -1,31 +1,73 @@
 <template>
   <v-app>
-    <v-toolbar app>
+    <!-- 导航 -->
+    <w-navigation v-if="$store.getters['auth/user']" :drawer="drawer" @todrawer="(p)=> drawer = p"></w-navigation>
+    <!-- 导航end -->
+    <!-- 标题 -->
+    <v-toolbar color="red" app dense fixed clipped-left>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <span>{{$t('advokateCard')}}</span>
+        <span class="font-weight-light">{{$t('publicManagementPlatform')}}</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <div style="width:120px;">
+        <v-select
+          v-model="i18nValue"
+          :items="i18nArray"
+          menu-props="auto"
+          label="Select"
+          hide-details
+          prepend-icon="fa-language"
+          single-line
+        ></v-select>
+      </div>
     </v-toolbar>
-
-    <v-content>
-      <router-view/>
+    <!-- 标题end -->
+    <v-content class="v-content">
+      <div class="v-body">
+        <router-view/>
+      </div>
     </v-content>
   </v-app>
 </template>
 
 <script>
-
+import WNavigation from './components/WNavigation.vue';
 export default {
   name: 'App',
+  components: {
+    WNavigation
+  },
   data () {
     return {
-      //
+      drawer: true,
+      i18nValue: process.env.VUE_APP_I18N_LOCALE,
+      i18nArray: ['en', 'zh-cn']
     };
+  },
+  watch: {
+    i18nValue (value) {
+      this.$i18n.locale = value;
+    }
+  },
+  methods: {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.v-content {
+  background-color: #ededed;
+
+  .v-body {
+    margin: 20px 10px;
+    background-color: #ffffff;
+  }
+}
+
+.word {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+</style>

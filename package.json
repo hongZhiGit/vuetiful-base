@@ -9,9 +9,9 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
-    "@mdi/font": "^2.6.95",
+    "@fortawesome/fontawesome-free": "^5.8.2",
     "core-js": "^2.6.5",
-    "roboto-fontface": "*",
+    "string-format-js": "^1.0.0",
     "vue": "^2.6.10",
     "vue-i18n": "^8.0.0",
     "vue-router": "^3.0.3",
