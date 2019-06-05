@@ -2,7 +2,10 @@
 
 import Vue from 'vue';
 import axios from 'axios';
-
+import store from './store.js';
+import { sign } from '../utils/validate.js';
+import router from './router.js';
+import { Toast } from 'vant';
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
@@ -14,13 +17,23 @@ let config = {
   // withCredentials: true, // Check cross-site Access-Control
 };
 
+// #region 设置加密和加签
+const configSetting = config => {
+  store.dispatch('auth/startAjax', config.url);
+  if (config.method === 'post') {
+    sign(config);
+  } else if (store.getters['auth/token']) {
+    config.headers.token = store.getters['auth/token'];
+  }
+
+  return config;
+};
+// #endregion
+
 const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
-  function (config) {
-    // Do something before request is sent
-    return config;
-  },
+  configSetting,
   function (error) {
     // Do something with request error
     return Promise.reject(error);
@@ -35,7 +48,17 @@ _axios.interceptors.response.use(
   },
   function (error) {
     // Do something with response error
-    return Promise.reject(error);
+    if (error.response.status === 401.1) {
+      // 重新登录
+      return router.replace({
+        path: '/login',
+        query: { redirect: router.currentRoute.fullPath }
+      });
+    }
+    if (error.response.status === 401.2) {
+      return Toast.fail(error.response.data.message);
+    }
+    return Promise.reject(error.response.data);
   }
 );
 

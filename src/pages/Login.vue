@@ -50,13 +50,12 @@ export default {
       if (!this.$refs.form.validate()) {
         return;
       }
-      this.$axios.post('/login', { userName: this.userName, passWord: this.passWord })
+      this.$axios.post('/pos-user/login', { userName: this.userName, passWord: this.passWord })
         .then((result) => {
           this.$store.dispatch('auth/loginSuccess', result.user);
           this.$store.dispatch('auth/token', result.token);
           this.$router.replace('/');
         }).catch((err) => {
-          // console.log(err);
           this.$toast(err.message);
         });
     }
