@@ -61,7 +61,7 @@ export default {
   background-color: #ededed;
 
   .v-body {
-    margin: 20px 10px;
+    margin: 20px auto;
     background-color: #ffffff;
   }
 }
