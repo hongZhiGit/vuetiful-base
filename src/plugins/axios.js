@@ -43,10 +43,12 @@ _axios.interceptors.request.use(
 // Add a response interceptor
 _axios.interceptors.response.use(
   function (response) {
+    store.dispatch('auth/endAjax', response.config.url);
     // Do something with response data
     return response;
   },
   function (error) {
+    store.dispatch('auth/endAjax', error.config.url);
     // Do something with response error
     if (error.response.status === 401.1) {
       // 重新登录
