@@ -2,7 +2,7 @@
  * @Author: 吴占超
  * @Date: 2019-04-26 14:24:40
  * @Last Modified by: 吴占超
- * @Last Modified time: 2019-06-04 10:49:31
+ * @Last Modified time: 2019-09-28 12:02:54
  */
 import _ from 'lodash';
 import Jsrsasign from 'jsrsasign';
@@ -44,4 +44,11 @@ export function sign (config) {
   config.headers.sign = Jsrsasign.hex2b64(hSig); // hex 转 b64
   config.headers.token = store.getters['auth/token'];
   config.headers.time = time;
+}
+
+export function deleteData (data) {
+  data && Object.keys(data).forEach(p => {
+    !data[p] && delete data[p];
+  });
+  return data;
 }

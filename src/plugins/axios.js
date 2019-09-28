@@ -5,7 +5,6 @@ import axios from 'axios';
 import store from './store.js';
 import { sign } from '../utils/validate.js';
 import router from './router.js';
-import { Toast } from 'vant';
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
@@ -58,7 +57,7 @@ _axios.interceptors.response.use(
       });
     }
     if (error.response.status === 401.2) {
-      return Toast.fail(error.response.data.message);
+      // return Toast.fail(error.response.data.message);
     }
     return Promise.reject(error.response.data);
   }
