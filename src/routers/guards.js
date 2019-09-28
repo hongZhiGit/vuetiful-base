@@ -2,7 +2,7 @@
  * @Author: 吴占超
  * @Date: 2019-04-29 11:38:33
  * @Last Modified by: 吴占超
- * @Last Modified time: 2019-06-04 10:31:56
+ * @Last Modified time: 2019-09-28 14:20:53
  * 导航守卫
  */
 'use strict';
@@ -15,7 +15,7 @@ router.beforeEach((to, from, next) => {
   if (goTo) {
     next();
   }
-  if (!store.getters['auth/user']) {
+  if (!store.getters['auth/token']) {
     router.replace('/login');
   } else {
     next();
