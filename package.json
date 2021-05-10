@@ -14,7 +14,7 @@
     "compression-webpack-plugin": "^2.0.0",
     "core-js": "^2.6.5",
     "jsrsasign": "^8.0.12",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "string-format-js": "^1.0.0",
     "vue": "^2.6.10",
     "vue-i18n": "^8.0.0",
