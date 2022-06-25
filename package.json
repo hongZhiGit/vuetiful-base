@@ -13,7 +13,7 @@
     "@fortawesome/fontawesome-free": "^5.8.2",
     "compression-webpack-plugin": "^2.0.0",
     "core-js": "^2.6.5",
-    "jsrsasign": "^8.0.12",
+    "jsrsasign": "^10.5.25",
     "lodash": "^4.17.11",
     "string-format-js": "^1.0.0",
     "vue": "^2.6.10",
